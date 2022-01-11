@@ -64,4 +64,48 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)") 
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should find a user with authentic credentials' do
+      @user = User.new(:name => 'user', :email => 'test@test.com', :password => 'password', :password_confirmation => 'password')
+      @user.save
+      @founduser = User.authenticate_with_credentials('test@test.com', 'password')
+      expect(@founduser).not_to be_nil
+      expect(@founduser.id).not_to be_nil
+      expect(@founduser.id).to eq(@user.id)
+    end
+    it 'should not find a user with wrong password' do
+      @user = User.new(:name => 'user', :email => 'test@test.com', :password => 'password', :password_confirmation => 'password')
+      @user.save
+      @founduser = User.authenticate_with_credentials('test@test.com', 'password12')
+      expect(@founduser).to be_nil
+    end
+    it 'should not find a user with wrong email address' do
+      @user = User.new(:name => 'user', :email => 'test@test.com', :password => 'password', :password_confirmation => 'password')
+      @user.save
+      @founduser = User.authenticate_with_credentials('test@test1.com', 'password')
+      expect(@founduser).to be_nil
+    end
+
+    # edge cases
+
+    it 'should find a user with email with spaces around it' do
+      @user = User.new(:name => 'user', :email => 'test@test.com', :password => 'password', :password_confirmation => 'password')
+      @user.save
+      @founduser = User.authenticate_with_credentials(' test@test.com ', 'password')
+      expect(@founduser).not_to be_nil
+      expect(@founduser.id).to eq(@user.id)
+    end
+
+    it 'should find a user with email with uppercase too' do
+      @user = User.new(:name => 'user', :email => 'EXAMPLe123@DOMAIN.CoM', :password => 'password', :password_confirmation => 'password')
+      @user.save
+      
+      @founduser = User.authenticate_with_credentials('eXample123@domain.COM', 'password')
+
+      expect(@founduser).not_to be(nil)
+      expect(@founduser.id).to eq(@user.id)
+    end
+  end
+
 end
