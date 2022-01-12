@@ -87,22 +87,22 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 ### User can add products to the cart
 Users can add the product in cart
 
-<img src='https://github.com/YagneshP/scheduler/blob/master/docs/create_appointment.gif'>
+<img src='https://github.com/YagneshP/jungle-rails/blob/master/docs/add_product_in_cart.gif'>
 
 ### User can edit quantity 
 Users can edit quantity of product in order page.
 
-<img src='https://github.com/YagneshP/scheduler/blob/master/docs/edit_appointmment.gif'>
+<img src='https://github.com/YagneshP/jungle-rails/blob/master/docs/change_quantity_in_order.gif'>
 
 ### User can pay with credit card
 Users can pay the total amount of the products with help of credit card(stripe).
 
-<img src='https://github.com/YagneshP/scheduler/blob/master/docs/delete_appointment.gif' >
+<img src='https://github.com/YagneshP/jungle-rails/blob/master/docs/pay_with_stripe.gif' >
 
 ### Admin has right to change the products and categories.
 Only admin can edit/add and delete the products/categories.
 
-<img src='https://github.com/YagneshP/scheduler/blob/master/docs/prev_mode.gif' >
+<img src='https://github.com/YagneshP/jungle-rails/blob/master/docs/admin.gif' >
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
